@@ -2,7 +2,7 @@ services:
   - type: web
     name: qmexai-backend
     env: python
-    region: frankfurt # Choose region closest to you (e.g., ohio, singapore, frankfurt)
+    region: frankfurt 
     buildCommand: "pip install -r backend/requirements.txt && cd backend && alembic upgrade head"
     startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
@@ -17,7 +17,7 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 1440
 
-  - type: psql
-    name: qmexai-db
+databases:
+  - name: qmexai-db
     region: frankfurt
-    plan: free # Generates a free PostgreSQL database instance
+    plan: free
