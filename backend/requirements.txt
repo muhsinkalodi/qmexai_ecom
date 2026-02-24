@@ -7,3 +7,4 @@ python-multipart
 reportlab
 pydantic
 pydantic-settings
+psycopg2-binary
