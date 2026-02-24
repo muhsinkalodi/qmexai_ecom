@@ -1,0 +1,148 @@
+.profileContainer {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.email {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.logoutBtn {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.ordersSection h2 {
+    font-size: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.loader {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 40px;
+}
+
+.emptyState {
+    padding: 60px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emptyState p {
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.orderList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.orderCard {
+    padding: 24px;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.orderId {
+    font-weight: 600;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.orderDate {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.statusBadge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pending {
+    background: rgba(255, 152, 0, 0.15);
+    color: #FFB74D;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.processing {
+    background: rgba(33, 150, 243, 0.15);
+    color: #64B5F6;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.shipped {
+    background: rgba(156, 39, 176, 0.15);
+    color: #BA68C8;
+    border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.delivered {
+    background: rgba(76, 175, 80, 0.15);
+    color: #81C784;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.orderItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.itemRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.orderFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.totalPrice {
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+}

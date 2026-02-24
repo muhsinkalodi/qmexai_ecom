@@ -1,0 +1,16 @@
+name = "qmexai-backend"
+main = "main.py"
+compatibility_date = "2024-03-20"
+compatibility_flags = ["python_workers"]
+
+# Cloudflare D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "qmexai-db"
+database_id = "" # Will be populated after 'wrangler d1 create'
+
+[vars]
+SECRET_KEY = "yoursecretkeyhere_keepitasecret"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 1440
+PORT = 8000

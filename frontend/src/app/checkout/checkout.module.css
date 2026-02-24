@@ -1,0 +1,102 @@
+.checkoutContainer {
+    padding: 60px 20px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.summarySection {
+    flex: 1;
+}
+
+.paymentSection {
+    flex: 1;
+}
+
+.checkoutContainer h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+.summaryBox,
+.paymentForm {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.summaryTotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.totalVal {
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+}
+
+.errorBanner {
+    background: rgba(255, 65, 54, 0.2);
+    color: #ff8c8c;
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    font-size: 14px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputGroup label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.inputField {
+    background: rgba(11, 12, 16, 0.5);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 14px;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    outline: none;
+    resize: vertical;
+    transition: border-color var(--transition-fast);
+}
+
+.inputField:focus {
+    border-color: var(--accent-color);
+}
+
+.payBtn {
+    margin-top: 16px;
+    width: 100%;
+    font-size: 18px;
+    padding: 16px;
+}
+
+@media (max-width: 768px) {
+    .checkoutContainer {
+        flex-direction: column;
+    }
+}

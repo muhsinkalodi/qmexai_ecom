@@ -1,0 +1,104 @@
+.perspectiveContainer {
+    perspective: 1000px;
+    width: 100%;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.1s ease, box-shadow var(--transition-normal);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+    transform: translateZ(30px);
+    /* 3D pop effect */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--transition-slow);
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+}
+
+.content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    transform: translateZ(50px);
+    /* 3D pop effect */
+    background: linear-gradient(to top, var(--bg-color-secondary) 0%, transparent 100%);
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 18px;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-family: var(--font-heading);
+}
+
+.mrp {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.addToCartBtn {
+    margin-top: auto;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.editBtn {
+    padding: 4px 8px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.discountBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--danger-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: var(--border-radius-sm);
+    font-size: 12px;
+    font-weight: 800;
+    z-index: 2;
+}
+
+.card:hover .addToCartBtn {
+    opacity: 1;
+}
