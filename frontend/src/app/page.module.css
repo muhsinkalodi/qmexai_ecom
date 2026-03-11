@@ -1,191 +1,103 @@
 .homeContainer {
     display: flex;
     flex-direction: column;
+    background-color: #f1f3f6;
+    /* Classic Flipkart grey background */
+    min-height: 100vh;
 }
 
-/* Hero Section */
-.hero {
-    position: relative;
-    min-height: 80vh;
+/* Mega Hero Banner */
+.megaHero {
+    background: linear-gradient(135deg, #2874f0 0%, #0053c2 100%);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+}
+
+.megaContent {
     display: flex;
     align-items: center;
-    overflow: hidden;
-    padding-top: 40px;
-}
-
-.heroGlow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 60vh;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.carouselBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=2000');
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
-    z-index: 0;
-    transition: background-image 0.5s ease-in-out;
+    background-blend-mode: overlay;
+    background-color: rgba(40, 116, 240, 0.7);
+    border-radius: 4px;
+    padding: 60px 40px;
 }
 
-.heroContent {
-    position: relative;
-    z-index: 2;
+/* Flipkart Row Structure */
+.dealRow {
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rowHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    height: 100%;
-    max-width: 1200px;
-}
-
-.heroTextContent {
-    flex: 1;
-    max-width: 600px;
-}
-
-.carouselContainer {
-    flex: 0 0 400px;
-    position: relative;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.title {
-    font-size: clamp(40px, 6vw, 80px);
-    line-height: 1.1;
+    align-items: flex-end;
     margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.highlight {
-    color: var(--accent-color);
-}
-
-.subtitle {
-    font-size: clamp(16px, 2vw, 24px);
-    color: var(--text-secondary);
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.ctaGroup {
+/* Fluid Horizontal Swiper */
+.horizontalScroll {
     display: flex;
-    gap: 16px;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 16px;
+    /* space for scrollbar */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* Momentum scrolling on iOS */
 }
 
-.carouselIndicators {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
+/* Hide scrollbar for Chrome, Safari and Opera visually while keeping functionality */
+.horizontalScroll::-webkit-scrollbar {
+    height: 6px;
 }
 
-.indicatorDot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--glass-border);
-    border: none;
-    cursor: pointer;
-    transition: all var(--transition-fast);
+.horizontalScroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
 }
 
-.activeDot {
-    background-color: var(--accent-color);
-    transform: scale(1.3);
+.horizontalScroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
 }
 
-.heroBtn {
-    font-size: 16px;
-    padding: 16px 32px;
+.horizontalScroll::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
-/* Featured Section */
-.featured {
-    padding: 80px 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));
-}
-
-.sectionHeader {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 48px;
-}
-
-.sectionTitle {
-    font-size: 32px;
-    white-space: nowrap;
-}
-
-.line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    opacity: 0.5;
-}
-
-.productGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 32px;
-}
-
-.noProducts {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 18px;
-    padding: 40px;
-    background: var(--glass-bg);
-    border-radius: var(--border-radius-md);
-}
-
-@media (max-width: 968px) {
-    .heroContent {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .heroTextContent {
-        max-width: 100%;
-        margin-bottom: 32px;
-    }
-
-    .ctaGroup {
-        justify-content: center;
-    }
-
-    .carouselContainer {
-        flex: 1;
-        width: 100%;
-        max-width: 400px;
-    }
+.scrollItem {
+    flex: 0 0 260px;
+    /* Fixed width cards to allow infinite horizontal scroll */
+    min-width: 260px;
 }
 
 @media (max-width: 768px) {
-    .hero {
-        min-height: calc(100vh - 70px);
+    .megaHero {
+        padding: 20px 0;
     }
 
-    .title {
-        font-size: 40px;
+    .megaContent {
+        padding: 40px 20px;
     }
 
-    .ctaGroup {
-        flex-direction: column;
-        padding: 0 20px;
+    .dealRow {
+        padding: 16px;
+    }
+
+    .scrollItem {
+        flex: 0 0 220px;
+        min-width: 220px;
     }
 }
