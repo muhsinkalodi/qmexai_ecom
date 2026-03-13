@@ -101,7 +101,7 @@ def apply_bulk_discount(req: BulkDiscountRequest, db: Session = Depends(database
     db.commit()
     return {"detail": f"Updated {updated_count} products in category '{req.category}'"}
 
-@router.post("/seed", dependencies=[Depends(get_current_admin)])
+@router.post("/seed")
 def seed_dummy_data(db: Session = Depends(database.get_db)):
     # Create dummy products if empty
     if db.query(models.Product).count() > 0:
