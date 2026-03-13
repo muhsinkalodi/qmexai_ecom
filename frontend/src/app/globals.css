@@ -129,8 +129,8 @@ button {
 /* Main Layout */
 .main-content {
   flex: 1;
-  padding-top: 104px;
-  /* Space for fixed 64px top tier + 40px bottom tier navbar */
+  padding-top: 80px;
+  /* Space for fixed navbar */
 }
 
 /* Quick-Add Fly-To-Cart Macro */

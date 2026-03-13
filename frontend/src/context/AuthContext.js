@@ -40,11 +40,15 @@ export function AuthProvider({ children }) {
 
     // Generate an adaptive API endpoint based on the host so mobile devices ping the network IP, not localhost
     const getBaseUrl = () => {
+        // Strictly prioritize Production API URLs baked by Vercel
+        if (process.env.NEXT_PUBLIC_API_URL) {
+            return process.env.NEXT_PUBLIC_API_URL;
+        }
+        // Fallback for local LAN testing
         if (typeof window !== 'undefined') {
-            // Force client devices to use their current host IP (Solves mobile CORS/Network errors)
             return `http://${window.location.hostname}:8000`;
         }
-        return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        return 'http://localhost:8000';
     };
     const apiUrl = getBaseUrl();
 
