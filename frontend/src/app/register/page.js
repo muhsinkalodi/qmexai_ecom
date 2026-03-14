@@ -36,7 +36,8 @@ export default function Register() {
 
         } catch (err) {
             console.error("Registration fetch error:", err);
-            setError('Network error: Unable to reach the server.');
+            // Try to extract more info if it's a JSON response with a detail
+            setError(`Network error or Server Crash. Check Console. ${err.message || ''}`);
         } finally {
             setLoading(false);
         }
