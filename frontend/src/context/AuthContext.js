@@ -40,15 +40,27 @@ export function AuthProvider({ children }) {
 
     // Generate an adaptive API endpoint based on the host so mobile devices ping the network IP, not localhost
     const getBaseUrl = () => {
-        // Strictly prioritize Production API URLs baked by Vercel/Render
+        // 1. Environment Variable (Prioritized)
         if (process.env.NEXT_PUBLIC_API_URL) {
-            console.log("Using Production API URL:", process.env.NEXT_PUBLIC_API_URL);
-            return process.env.NEXT_PUBLIC_API_URL;
+            const url = process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, ""); // Remove trailing slash
+            console.log("Qmexai API: Using NEXT_PUBLIC_API_URL ->", url);
+            return url;
         }
-        // Fallback for local LAN testing
+
         if (typeof window !== 'undefined') {
-            const fallback = `http://${window.location.hostname}:8000`;
-            console.log("Using Local/Fallback API URL:", fallback);
+            const hostname = window.location.hostname;
+
+            // 2. Auto-Detection for Render
+            // If we are on Render frontend, try to guess the Render backend URL
+            if (hostname.includes('onrender.com')) {
+                const backendGuess = `https://qmexai-backend.onrender.com`;
+                console.warn(`Qmexai API: NEXT_PUBLIC_API_URL is missing! Guessing backend: ${backendGuess}`);
+                return backendGuess;
+            }
+
+            // 3. Local Fallback
+            const fallback = `http://${hostname}:8000`;
+            console.log("Qmexai API: Falling back to local ->", fallback);
             return fallback;
         }
         return 'http://localhost:8000';
