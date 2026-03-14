@@ -12,7 +12,7 @@ app = FastAPI(title="Qmexai API", version="1.0.0")
 # Note: When allow_credentials=True, allow_origins cannot be ["*"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex="https://.*\.onrender\.com", # Allow any Render app
+    allow_origin_regex="https://.*\.(onrender\.com|vercel\.app)", # Allow any Render or Vercel app
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
