@@ -53,7 +53,9 @@ export function AuthProvider({ children }) {
             // 2. Auto-Detection for Render
             // If we are on Render frontend, try to guess the Render backend URL
             if (hostname.includes('onrender.com')) {
-                const backendGuess = `https://qmexai-backend.onrender.com`;
+                // Try a few variations: e.g. qmexai-ecom-backend or qmexai-ecom
+                const base = hostname.split('.')[0].replace(/-frontend$/, "").replace(/-web$/, "");
+                const backendGuess = `https://${base}.onrender.com`;
                 console.warn(`Qmexai API: NEXT_PUBLIC_API_URL is missing! Guessing backend: ${backendGuess}`);
                 return backendGuess;
             }

@@ -9,9 +9,14 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Qmexai API", version="1.0.0")
 
 # Configure CORS for frontend access
+# Note: When allow_credentials=True, allow_origins cannot be ["*"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # For production, change to frontend domain
+    allow_origin_regex="https://.*\.onrender\.com", # Allow any Render app
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
