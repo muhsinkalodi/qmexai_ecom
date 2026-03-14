@@ -26,16 +26,41 @@ app.add_middleware(
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
-    print(f"Global Error Catch: {str(exc)}")
-    print(traceback.format_exc())
+    error_msg = str(exc)
+    stack_trace = traceback.format_exc()
+    print(f"Global Error Catch: {error_msg}")
+    print(stack_trace)
+    
+    # Manually build the JSON response with CORS headers to ensure the browser can see it
+    headers = {
+        "Access-Control-Allow-Origin": request.headers.get("origin", "*"),
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*",
+    }
+    
     return JSONResponse(
         status_code=500,
-        content={"detail": str(exc), "traceback": traceback.format_exc()},
-        headers={
-            "Access-Control-Allow-Origin": request.headers.get("origin", "*"),
-            "Access-Control-Allow-Credentials": "true",
-        }
+        content={
+            "detail": error_msg,
+            "error_type": type(exc).__name__,
+            "traceback": stack_trace
+        },
+        headers=headers
     )
+
+@app.get("/debug-db")
+def debug_db(db: Session = Depends(get_db)):
+    try:
+        # Try a simple query
+        from sqlalchemy import text
+        db.execute(text("SELECT 1"))
+        return {"status": "success", "message": "Database connection is working!"}
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={"status": "error", "message": str(e), "traceback": traceback.format_exc()}
+        )
 
 app.include_router(auth.router)
 app.include_router(products.router)
